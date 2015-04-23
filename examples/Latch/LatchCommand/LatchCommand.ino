@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -20,6 +21,15 @@ void setup() {
 }
 
 void loop() {
+  /*
+  |
+  |     X0         +--------+    Y0
+  |----] [---------|Set    Q|----( )----|
+  |     X1         |        |    Y1
+  |----] [---------|Reset  q|----( )----| 
+  |                +--------+
+  */
+  
   in(X0);              // Read switch connected to Input 0 (Set input)
   latch(Y0, X1);       // Latch, Q = Output 0, Reset = Input 1
   

@@ -21,6 +21,14 @@ void setup() {
 }
 
 void loop() {
+  /* latch discrate
+  |     X0          X1         Y0
+  |----] [----+----]/[---------( )----|
+  |     Y0    |
+  |----] [----+
+  |     Y0                      Y1
+  |----] [----+----------------(/)----|
+  |*/
   in(X0);           // Read switch connected to Input 0 (Set)
   orBit(Y0);        // Self latch using Output 0 (Q)
   andNotBit(X1);    // Reset latch using Input 1 (Reset)
