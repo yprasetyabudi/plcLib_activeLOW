@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -23,7 +24,19 @@ void setup() {
 }
 
 void loop() {
-  in (X0);                              // Read Enable input (1 = enable)
+  /*
+                    +----------+
+   |     X0         |timerCycle|            Y0
+   |-----] [--------|EN       Q|-----------(  )----|
+   |           AUX0-|TL_VAR    |
+                900-|TL_DELAY  |
+               AUX1-|TH_VAR    |
+                100-|TH_DELAY  |
+                    +----------+ 
+   
+   */
+   
+  in(X0);                              // Read Enable input (1 = enable)
   timerCycle(AUX0, 900, AUX1, 100);     // Repeating pulse, low = 0.9 s, high = 0.1 s
                                         // (hence period = 1 second)
   out(Y0);                              // Send pulse waveform to Output 0
