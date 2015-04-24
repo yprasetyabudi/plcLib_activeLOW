@@ -21,6 +21,19 @@ void setup() {
 }
 
 void loop() {
+  /*
+            +-----------+
+  input     |           |
+  __________|           |______________
+  
+            +-------------------+
+  off delay |                   |
+  __________|                   |______
+                        
+                         |      |
+                         |<---->|     
+                         Delay(ms)
+  */
   in(X0);                  // Read Input 0
   timerOff(TIMER0, 2000);  // 2 second turn-off delay
   out(Y0);                 // Output to Output 0

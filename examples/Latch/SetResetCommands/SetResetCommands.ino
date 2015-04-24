@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -20,6 +21,13 @@ void setup() {
 }
 
 void loop() {
+  /*
+  |    X0              Y0
+  |----] [-------------(S)----|
+  |    X1              Y0
+  |----] [-------------(R)----|
+  |
+  */
   in(X0);              // Read switch connected to Input 0 (Set input)
   set(Y0);             // Set Y0 to 1 if X0 = 1, leave Y0 unaltered otherwise
 

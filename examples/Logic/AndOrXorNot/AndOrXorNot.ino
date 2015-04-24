@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -22,20 +23,48 @@ void setup() {
 }
 
 void loop() {
+  /* Gerbang AND
+  |    X0          X1          Y0 
+  |----| |---------| |---------( )----|
+  |  
+  */
   in(X0);      // Read Input 0
   andBit(X1);  // AND with Input 1
   out(Y0);     // Send result to Output 0
-
+  /* Gerbang OR
+  |    X0                      Y0 
+  |----| |----|----------------( )----|
+  |    X1     |
+  |----| |----|  
+  */
   in(X0);      // Read Input 0
   orBit(X1);   // OR with Input 1
   out(Y1);     // Send result to Output 1
-  
+  /* Gerbang XOR
+  |    X0          X1           Y0 
+  |----| |---------|/|----|----( )----|
+  |    X0          X1     |
+  |----|/|---------| |----|  
+  */  
   in(X0);      // Read Input 0
   xorBit(X1);  // XOR with Input 1
   out(Y2);     // Send result to Output 2
-  
+  /* Gerbang XOR
+  |    X0                      Y0 
+  |----|/|----|----------------( )----|
+  | 
+  */  
   in(X0);      // Read Input 0
   outNot(Y3);  // Send inverted result to Output 3
+  /* Gerbang NAND
+  |    X0                      Y0 
+  |----|/|----|----------------( )----|
+  |    X1     |
+  |----|/|----|  
+  */
+  in(X0);      // Read Input 0
+  nandBit(X1);   // OR with Input 1
+  out(Y4);     // Send result to Output 1
 }
 
 

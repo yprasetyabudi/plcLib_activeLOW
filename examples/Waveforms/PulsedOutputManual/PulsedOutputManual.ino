@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -22,6 +23,16 @@ void setup() {
 }
 
 void loop() {
+  /*
+             +-+                  +-+
+             | |                  | |
+             | |                  | |
+             | |                  | |
+             | |                  | |
+       ------+ +------------------+ +-------
+                      900 ms          100 ms
+               |<---------------->| |<------      
+  */
   in(X0);                  // Read Input 0 (enable)
   andNotBit(Y0);           // And with inverted output
   timerOn(TIMER0, 900);    // 900 ms (0.9 s) delay

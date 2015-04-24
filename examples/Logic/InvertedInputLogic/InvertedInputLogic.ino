@@ -21,6 +21,17 @@ void setup() {
 }
 
 void loop() {
+  /*
+  |    X0          X1               Y0
+  |----] [---------]/[--------------( )----|
+  |
+  |    X0                           Y1
+  |----] [----+---------------------( )----|
+  |
+  |    X1     |
+  |----]/[----+
+  |
+  | */
   in(X0);          // Read Input 0
   andNotBit(X1);   // AND with Input 1 (inverted)
   out(Y0);         // Send result to Output 0
