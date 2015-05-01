@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -33,7 +34,13 @@ void setup() {
 }
 
 void loop() {
-
+  /*
+  |    X0                     X2                Y0
+  |----] [----+----------+----] [----+----------( )-----|
+  |           |          |           |          
+  |    X1     |          |    X3     |
+  |----] [----+          +----] [----+
+  */
                      // Calculate First Branch
   in(X0);            // Read switch connected to Input 0
   orBit(X1);         // Logical OR with Input 1

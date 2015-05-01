@@ -1,4 +1,5 @@
-#include <plcLib.h>
+//#include <plcLib.h>
+#include <plcLib_activeLOW.h>
 
 /* Programmable Logic Controller Library for the Arduino and Compatibles
 
@@ -21,6 +22,8 @@ unsigned int myVar = 0;   // Create a user defined variable and set initial valu
 
 void setup() {
   setupPLC();             // Setup inputs and outputs
+  // initialize serial communications at 9600 bps:
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -29,6 +32,11 @@ void loop() {
   if (myVar == 1) {       // Vary PWM, if enabled
     inAnalog(X1);         // Read Analogue Input 1
     outPWM(Y0);           // Send to Output 0 as PWM waveform
+    //
+    Serial.print("sensor = " );
+    Serial.print(inAnalog(X1));
+    Serial.print("\t output = ");
+    Serial.println(outPWM(Y0));
   }
 }
 
